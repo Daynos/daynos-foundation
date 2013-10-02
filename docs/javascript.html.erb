@@ -46,13 +46,11 @@
 
         <h5>Initialize Foundation</h5>
         <p>After you have included the Foundation JavaScript, just add a simple call to initialize all plugins on your page.</p>
-        <p>It is recommended that you initialize on document ready</p>
+        <p>It is recommended that you initialize Foundation at the end of the page <code>&lt;body&gt;</code>.</p>
 
 <%= code_example '
 <script>
-  $(function(){
-    $(document).foundation();    
-  })
+  $(document).foundation();
 </script>
 ', :html %>
 
@@ -110,7 +108,7 @@ $(document)
 
         <h2>Calling Internal Methods</h2>
 
-        <p>Foundation 4 JavaScript allows you call call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, since they are not initialized on page load by default.</p>
+        <p>Foundation 4 JavaScript allows you call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, since they are not initialized on page load by default.</p>
 
         <p>This will fire the <code>start</code> method on Joyride:</p>
 

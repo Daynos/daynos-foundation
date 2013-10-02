@@ -12,8 +12,13 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <div data-alert class="alert-box radius">
+        <div data-alert class="alert-box">
           This is a standard alert (div.alert-box).
+          <a href="" class="close">&times;</a>
+        </div>
+
+        <div data-alert class="alert-box radius">
+          This is a radius alert (div.alert-box.radius).
           <a href="" class="close">&times;</a>
         </div>
 
@@ -48,10 +53,12 @@
         <hr>
 
         <h3>Build with Mixins</h3>
-        <p>We've included SCSS mixins used to style alert boxes. To use these mixins, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_foundation-global.scss">_foundation-global.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_alert-boxes.scss">_alert-boxes.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+        <p>We've included SCSS mixins used to style alert boxes. To use these mixins, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_alert-boxes.scss">_alert-boxes.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/foundation-global", "foundation/components/global", "foundation/components/alerts";
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/alert-boxes";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
@@ -139,48 +146,76 @@
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
+$include-html-alert-classes: $include-html-classes;
+
 /* We use this to control alert padding. */
-$alert-padding-top:         emCalc(11px);
-$alert-padding-left:        $alert-padding-top;
-$alert-padding-right:       $alert-padding-top + emCalc(10px);
-$alert-padding-bottom:      $alert-padding-top + emCalc(1px);
+$alert-padding-top: em-calc(11);
+$alert-padding-default-float: $alert-padding-top;
+$alert-padding-opposite-direction: $alert-padding-top + em-calc(10);
+$alert-padding-bottom: $alert-padding-top + em-calc(1);
 
 /* We use these to control text style. */
-$alert-font-weight:         bold;
-$alert-font-size:           emCalc(14px);
-$alert-font-color:          #fff;
-$alert-font-color-alt:      darken($secondary-color, 60%);
+$alert-font-weight: bold;
+$alert-font-size: em-calc(14);
+$alert-font-color: #fff;
+$alert-font-color-alt: darken($secondary-color, 60%);
 
 /* We use this for close hover effect. */
-$alert-function-factor:     10%;
+$alert-function-factor: 10%;
 
 /* We use these to control border styles. */
-$alert-border-style:        solid;
-$alert-border-width:        1px;
-$alert-border-color:        darken($primary-color, $alert-function-factor);
-$alert-bottom-margin:       emCalc(20px);
+$alert-border-style: solid;
+$alert-border-width: 1px;
+$alert-border-color: darken($primary-color, $alert-function-factor);
+$alert-bottom-margin: em-calc(20);
 
 /* We use these to style the close buttons */
-$alert-close-color:         #333;
-$alert-close-position:      emCalc(5px);
-$alert-close-font-size:     emCalc(22px);
-$alert-close-opacity:       0.3;
+$alert-close-color: #333;
+$alert-close-position: em-calc(5);
+$alert-close-font-size: em-calc(22);
+$alert-close-opacity: 0.3;
 $alert-close-opacity-hover: 0.5;
-$alert-close-padding:       5px 4px 4px;
+$alert-close-padding: 5px 4px 4px;
 
 /* We use this to control border radius */
-$alert-radius:              $global-radius;
+$alert-radius: $global-radius;
+
 ', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>.</p>
 
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You don't need ths JS to create alert boxes with Foundation. The only reason you'll need to include <code>foundation.alerts.js</code> is if you want to add the ability to close an alert. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the alert plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+        <p>You don't need ths JS to create alert boxes with Foundation. The only reason you'll need to include <code>foundation.alerts.js</code> is if you want to add the ability to close an alert.
 
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <div class="panel">
+          Before you can use the top bar you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
+        <p>Just add <code>foundation.alerts.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
+
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.alerts.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
         <p>Required Foundation Library: <code>foundation.alerts.js</code></p>
 
         <p>Then, you'll need to add a data-attribute to make the JS work properly on that element. That looks like:</p>

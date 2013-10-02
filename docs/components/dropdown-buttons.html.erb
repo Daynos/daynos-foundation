@@ -15,10 +15,39 @@
       <div class="large-12 columns">
 
         <a href="#" data-dropdown="drop" class="tiny button dropdown">Dropdown Button</a><br>
+        <ul id="drop" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" data-dropdown="drop2" class="small secondary radius button dropdown">Dropdown Button</a><br>
+        <ul id="drop2" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" data-dropdown="drop3" class="button alert round dropdown">Dropdown Button</a><br>
+        <ul id="drop3" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" data-dropdown="drop4" class="large success button dropdown">Dropdown Button</a><br>
+        <ul id="drop4" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
+
         <a href="#" data-dropdown="drop5" class="large button dropdown expand">Dropdown Button</a><br>
+        <ul id="drop5" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <hr>
 
@@ -54,10 +83,13 @@
         <hr>
 
         <h3>Build with Mixins</h3>
-        <p>We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_foundation-global.scss">_foundation-global.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss">_buttons.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_dropdown-buttons.scss">_dropdown-buttons.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
+        <p>We've included SCSS mixins used to style buttons. To use these mixins, you'll need to have the <a href="../sass.html">extension installed</a> or grab <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/_variables.scss">_variables.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_buttons.scss">_buttons.scss</a>, <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_global.scss">_global.scss</a> and <a href="https://github.com/zurb/foundation/blob/master/scss/foundation/components/_dropdown-buttons.scss">_dropdown-buttons.scss</a> from Github and throw them into a Foundation folder in your project directory. From there, you can import the files at the top of your own SCSS stylesheet, like so:</p>
 
 <%= code_example '
-@import "foundation/foundation-global", "foundation/components/global", "foundation/components/buttons", "foundation/components/dropdown-buttons";
+@import "foundation/variables";
+@import "foundation/components/global";
+@import "foundation/components/buttons";
+@import "foundation/components/dropdown-buttons";
 ', :css %>
 
         <p>If you are using the mixins, you may include the styles on whatever class or ID you'd like, just make sure you follow our markup structure:</p>
@@ -78,6 +110,11 @@
 ', :css %>
 
         <a href="" data-dropdown="drop7 "class="dropdown button">Default Dropdown Button</a>
+        <ul id="drop7" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <p>There are also <strong>three options</strong> you can customize on the fly when writing this mixin. These control things like: background color, pip color and base styles. Setting any of these options to <strong>false</strong> will not include the styles.</p>
 
@@ -113,47 +150,79 @@ $base-style: true
 ', :css %>
 
     <a href="#" data-dropdown="drop6" class="customized-dropdown-docs">Button Base, Size, Style &amp; Shine</a>
+    <ul id="drop6" data-dropdown-content class="f-dropdown">
+      <li><a href="#">This is a link</a></li>
+      <li><a href="#">This is another</a></li>
+      <li><a href="#">Yet another</a></li>
+    </ul>
 
         <h5>Default SCSS Variables</h5>
 <%= code_example '
+$include-html-button-classes: $include-html-classes;
+
 /* We use these to set the color of the pip in dropdown buttons */
-$dropdown-button-pip-color:     #fff;
+$dropdown-button-pip-color: #fff;
 $dropdown-button-pip-color-alt: #333;
 
 /* We use these to style tiny dropdown buttons */
-$dropdown-button-padding-tny:   $button-tny * 5;
-$dropdown-button-pip-size-tny:  $button-tny;
-$dropdown-button-pip-right-tny: $button-tny * 2;
-$dropdown-button-pip-top-tny:   -$button-tny / 2 + emCalc(1px);
+$dropdown-button-padding-tny: $button-tny * 5;
+$dropdown-button-pip-size-tny: $button-tny;
+$dropdown-button-pip-opposite-tny: $button-tny * 2;
+$dropdown-button-pip-top-tny: -$button-tny / 2 + em-calc(1);
 
 /* We use these to style small dropdown buttons */
-$dropdown-button-padding-sml:   $button-sml * 5;
-$dropdown-button-pip-size-sml:  $button-sml;
-$dropdown-button-pip-right-sml: $button-sml * 2;
-$dropdown-button-pip-top-sml:   -$button-sml / 2 + emCalc(2px);
+$dropdown-button-padding-sml: $button-sml * 5;
+$dropdown-button-pip-size-sml: $button-sml;
+$dropdown-button-pip-opposite-sml: $button-sml * 2;
+$dropdown-button-pip-top-sml: -$button-sml / 2 + em-calc(1);
 
 /* We use these to style medium dropdown buttons */
-$dropdown-button-padding-med:   $button-med * 4 + emCalc(3px);
-$dropdown-button-pip-size-med:  $button-med - emCalc(3px);
-$dropdown-button-pip-right-med: $button-med * 2;
-$dropdown-button-pip-top-med:   -$button-med / 2 + emCalc(2px);
+$dropdown-button-padding-med: $button-med * 4 + em-calc(3);
+$dropdown-button-pip-size-med: $button-med - em-calc(3);
+$dropdown-button-pip-opposite-med: $button-med * 2;
+$dropdown-button-pip-top-med: -$button-med / 2 + em-calc(2);
 
 /* We use these to style large dropdown buttons */
-$dropdown-button-padding-lrg:   $button-lrg * 4;
-$dropdown-button-pip-size-lrg:  $button-lrg - emCalc(6px);
-$dropdown-button-pip-right-lrg: $button-lrg + emCalc(12px);
-$dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px);
+$dropdown-button-padding-lrg: $button-lrg * 4;
+$dropdown-button-pip-size-lrg: $button-lrg - em-calc(6);
+$dropdown-button-pip-opposite-lrg: $button-lrg + em-calc(12);
+$dropdown-button-pip-top-lrg: -$button-lrg / 2 + em-calc(3);
 ', :css %>
 
-        <p><strong>Note:</strong> <code>emCalc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_foundation-global.scss</strong>.</p>
+        <p><strong>Note:</strong> <code>em-calc();</code> is a function we wrote to convert <code>px</code> to <code>em</code>. It is included in <strong>_variables.scss</strong>.</p>
 
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You don't need ths JS to create dropdown button styles with Foundation. The only reason you'll need to include <code>foundation.dropdown.js</code> is if you want to add one of our dropdown to the button. You'll also need to make sure to include <code>zepto.js</code> and <code>foundation.js</code> above the dropdown plugin. Above your closing <code>&lt;/body&gt;</code> tag include the following line of code and make sure you have the JS in your directory:</p>
+        <p>You don't need ths JS to create dropdown button styles with Foundation. The only reason you'll need to include <code>foundation.dropdown.js</code> is if you want to add one of our dropdown to the button. 
 
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <div class="panel">
+          Before you can use dropdowns you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
+        <p>Just add <code>foundation.dropdown.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
+
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
         <p>Required Foundation Library: <code>foundation.dropdown.js</code></p>
 
         <h5>Creating the Dropdown</h5>
@@ -170,6 +239,11 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px);
 ', :html %>
 
         <a href="#" data-dropdown="drop1" class="button dropdown">Dropdown Button</a><br>
+        <ul id="drop1" data-dropdown-content class="f-dropdown">
+          <li><a href="#">This is a link</a></li>
+          <li><a href="#">This is another</a></li>
+          <li><a href="#">Yet another</a></li>
+        </ul>
 
         <p>Required Foundation Library: <code>foundation.dropdown.js</code></p>
 
@@ -182,7 +256,7 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px);
 <%= code_example "
 {
   activeClass: 'open'
-}", :json %>
+}", :js %>
       </div>
     </div>
 
@@ -191,45 +265,3 @@ $dropdown-button-pip-top-lrg:   -$button-lrg / 2 + emCalc(3px);
     <%= render "_sidebar-components.html.erb" %>
   </div>
 </div>
-
-
-<ul id="drop" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop1" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop2" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop3" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop4" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop5" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop6" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-<ul id="drop7" data-dropdown-content class="f-dropdown">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>

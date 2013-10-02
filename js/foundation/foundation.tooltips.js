@@ -4,14 +4,15 @@
   'use strict';
 
   Foundation.libs.tooltips = {
-    name: 'tooltips',
+    name : 'tooltips',
 
-    version : '4.1.7',
+    version : '4.3.2',
 
     settings : {
       selector : '.has-tip',
       additionalInheritableClasses : [],
       tooltipClass : '.tooltip',
+      touchCloseText: 'tap to close',
       appendTo: 'body',
       'disable-for-touch': false,
       tipTemplate : function (selector, content) {
@@ -33,7 +34,7 @@
         $.extend(true, this.settings, options);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         if (Modernizr.touch) {
           $(this.scope)
             .on('click.fndtn.tooltip touchstart.fndtn.tooltip touchend.fndtn.tooltip', 
@@ -56,7 +57,7 @@
               '[data-tooltip]', function (e) {
               var $this = $(this);
 
-              if (e.type === 'mouseover' || e.type === 'mouseenter') {
+              if (/enter|over/i.test(e.type)) {
                 self.showOrCreateTip($this);
               } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
                 self.hide($this);
@@ -86,7 +87,7 @@
           tip = null;
 
       if (selector) {
-        tip = $('span[data-selector=' + selector + ']' + this.settings.tooltipClass);
+        tip = $('span[data-selector="' + selector + '"]' + this.settings.tooltipClass);
       }
 
       return (typeof tip === 'object') ? tip : false;
@@ -110,7 +111,7 @@
 
       $tip.addClass(classes).appendTo(this.settings.appendTo);
       if (Modernizr.touch) {
-        $tip.append('<span class="tap-to-close">tap to close </span>');
+        $tip.append('<span class="tap-to-close">'+this.settings.touchCloseText+'</span>');
       }
       $target.removeAttr('title').attr('title','');
       this.show($target);
@@ -201,6 +202,8 @@
       $(this.settings.tooltipClass).each(function (i) {
         $('[data-tooltip]').get(i).attr('title', $(this).text());
       }).remove();
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

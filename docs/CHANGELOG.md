@@ -1,7 +1,95 @@
-<!-- 
-### 4.1.7- May 9, 2013
-* Added .clearing-featured-img class to designate the featured image in a .clearing-feature list 
--->
+### 4.3.2- September 23, 2013
+
+* Documentation updates
+* When changing slides in Orbit all `data-orbit-link` will now get an active class
+* Adds new `em-calc` function, old `emCalc` will automatically reference newly named function
+* Lots of other bug fixes
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.3.1...v4.3.2).
+
+### 4.3.1- July 23, 2013
+* Fixes RTL animation issues in Orbit
+* Addresses error class conflicts between Abide and general form styles
+* Bug fixes
+
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.3.0...v4.3.1).
+
+### 4.3- July 18, 2013
+* Added [Abide](http://foundation.zurb.com/docs/components/abide.html), our new form validation plugin that works with simple data-attributes.
+* Rewrote Orbit to include previous options and animations. We also made it possible to have variable height slides and separate animations.
+* Top Bar JS updates to fix a scrollTop bug
+* Fixed a positioning bug in custom forms when using the collapsed option
+* Added custom section to custom forms
+* Updated Interchange to support absolute URLs
+* Updated the emCalc to be used unitlessly and with multiple values
+* Created an early "opt-in" grid that we've built for Foundation 5. This includes 2 breakpoints and three grids (small, medium, large). Use this to start planning ahead to Foundation 5.
+* Fixed a bug with Section deep linking in nested content
+* Top Bar toggle bug fixes
+* Fixed bugs with dropdown positioning and closing
+* Updated visual style of bullets for Orbit
+* General bug fixes, improvements and refinements.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.2.3...v4.3.0).
+
+### 4.2.3- June 26, 2013
+* Made it to where custom switches work inside custom forms.
+* Small update to breadcrumb styling so that defaults don't get overridden.
+* Fixed bugs with height of Top Bar.
+* Added Middleman template to README
+* Fixed a wrong selector in forms.js
+* Bug fixes
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.2.2...v4.2.3).
+
+### 4.2.2- June 11, 2013
+* Added touch events to zepto core.
+* Fixed a topbar scroll issue.
+* Fixed a reveal scroll issue.
+* Bumped jQuery to 1.10.1
+* Added PHP template.
+* Removed default webkit appearance on buttons.
+* Updated placeholder.js to actually initiate properly, this should work just fine now.
+* Added a "fixed" class to magellan for alternate styling.
+* Fixed path to variables file for Compass upgrade path.
+* Other small bug fixes.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.2.1...v4.2.2).
+
+### 4.2.1- May 31, 2013
+* Add missing `$experimental` Sass variable.
+* Bug fixes for top bar in mobile view.
+* Retina is now a default named media query for Interchange.
+* Removes incompatible Zepto function used in custom forms.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.2.0...v4.2.1).
+
+### 4.2- May 30, 2013
+* Added new Interchange Plugin for handling responsive images.
+* Made a variable for the "sticky" class on the top-bar.
+* Changed media query variables to pixels for better consistency between font sizes.
+* Fixed deep linking for foundation.section.js.
+* Added data-options support to top-bar, you can now include "is_hover: false" to make it clickable.
+* Each dropdown section of the top-bar for mobile now takes on its natural height rather than looking for the tallest and setting them all to that.
+* Added data-options support for tool-tips.
+* Added .large-uncentered for when you only want centered on small screens.
+* Made block-grid spacing more like the normal grid.
+* Fixed confusing comments in visibility classes SCSS file.
+* Added AJAX support to Reveal.
+* Added cursor variables.
+* Fixed various typos in the documentation.
+* Updated CONTRIBUTOR.md to include how to run the docs locally.
+* Added Codekit instructions to documentation.
+* Changed to a better method test for Zepto.
+* Added hover support for dropdowns data-options by including "is_hover: true" to the options.
+* Added the ability to use deep-linking inside nested Sections.
+* Added the ability to use HTML in the data-caption for Clearing.
+* Fixes problem with embedded Youtube videos inside of Reveal.
+* Orbit now has pause/resume on hover/mousout capability.
+* Fixed Section vertical tabs on mobile.
+* Lots of small bug fixes and improvements for many of the JS components.
+
+You can compare the commits [here](https://github.com/zurb/foundation/compare/v4.1.6...v4.2.0).
 
 ### 4.1.6- May 6, 2013
 * Improved performance for custom select boxes.
