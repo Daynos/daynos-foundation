@@ -9,26 +9,31 @@
         <h2><%= @page_title %></h2>
         <h4 class="subheader">Orbit is an easy to use, powerful image slider that's responsive, allowing you to swipe on a touch-enabled device.</h4>
 
-        <ul id="featured1" data-orbit data-options="timer_speed:5000;">
-          <li>
-            <img src="../img/demos/demo1.jpg" />
-            <div class="orbit-caption">
-              Caption One. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-            </div>
-          </li>
-          <li>
-            <img src="../img/demos/demo2.jpg" />
-            <div class="orbit-caption">
-              Caption Two. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-            </div>
-          </li>
-          <li>
-            <img src="../img/demos/demo3.jpg" />
-            <div class="orbit-caption">
-              Caption Three. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-            </div>
-          </li>
-        </ul>
+        <div class="large-10 large-centered columns">
+          <div class="slideshow-wrapper">
+          <span class="preloader"></span>
+          <ul id="featured1" data-orbit data-options="pause_on_hover:false; timer_speed:5000;">
+            <li>
+              <img src="../img/demos/orbit/demo1.jpg" />
+              <div class="orbit-caption">
+                Caption One. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+              </div>
+            </li>
+            <li>
+              <img src="../img/demos/orbit/demo2.jpg" />
+              <div class="orbit-caption">
+                Caption Two. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+              </div>
+            </li>
+            <li>
+              <img src="../img/demos/orbit/demo3.jpg" />
+              <div class="orbit-caption">
+                Caption Three. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+              </div>
+            </li>
+          </ul>
+          </div>
+        </div>
 
         <hr>
 
@@ -42,7 +47,6 @@
         <p>Building Orbit is pretty simple using our HTML classes and structure; you'll just need to write the markup, find some images or text, fire up the Javascript and you'll be ready to go. On touch-enabled devices, Orbit has swipe functionality that makes it easy to switch slides. On screens without touch interfaces, you'll see bullet and arrow navigation if you have the options setup in your JS. Here's markup structure for Orbit:</p>
 
 <%= code_example '
-<!-- Basic orbit markup -->
 <ul data-orbit>
   <li>
     <img src="../img/demos/demo1.jpg" />
@@ -112,7 +116,7 @@
 ', :html %>
 
         <hr>
-
+        <div class="large-10 large-centered columns">
         <ul id="featured2" data-orbit>
           <li data-orbit-slide="headline-1">
             <h2>Headline 1</h2>
@@ -130,6 +134,7 @@
             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
           </li>
         </ul>
+        </div>
 
         <hr>
 
@@ -155,7 +160,7 @@
         </p>
 
 <%= code_example '
-<ul id="featured2" data-orbit>
+<ul data-orbit>
   <li data-orbit-slide="headline-1">
     <h2>Headline 1</h2>
     <h3>Subheadline</h3>
@@ -183,44 +188,104 @@
 
         <hr>
 
+        <h3>Graceful Loading &amp; Preloader</h3>
+        <p>We've cleaned up how Orbit initializes by adding a wrapper feature that stops the ugly flash of unstyled content. Here's the markup needed:</p>
+
+<%= code_example '
+<div class="slideshow-wrapper">
+  <ul id="featured2" data-orbit>
+    <!-- Orbit slides -->
+  </ul>
+</div>
+', :html %>
+
+        <p>To add the preloader, simply include a <code>div class="preloader"</code> right inside the wrapper, like so:</p>
+
+<%= code_example '
+<div class="slideshow-wrapper">
+  <div class="preloader"></div>
+  <ul data-orbit>
+    <!-- Orbit slides -->
+  </ul>
+</div>
+', :html %>
+
+        <div class="slideshow-wrapper" style="height: 200px; border: solid 1px #ddd">
+          <div class="preloader"></div>
+        </div>
+
+        <hr>
+
         <h3>Available SCSS Variables</h3>
         <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things.</p>
 
 <%= code_example '
+$include-html-orbit-classes: $include-html-classes;
+
 /* We use these to control the caption styles */
 $orbit-container-bg: #f5f5f5;
-$orbit-caption-bg-old-browser: #000;
-$orbit-caption-bg-old: rgb(0,0,0);
 $orbit-caption-bg: rgba(0,0,0,0.6);
 $orbit-caption-font-color: #fff;
+$orbit-caption-font-size: emCalc(14);
+$orbit-caption-position: "bottom";    // Supported values: "bottom", "under"
+$orbit-caption-padding: emCalc(10,14);
+$orbit-caption-height: auto;
 
 /* We use these to control the left/right nav styles */
-$orbit-nav-bg-old: rgb(0,0,0);
 $orbit-nav-bg: rgba(0,0,0,0.6);
+$orbit-nav-bg-hover: rgba(0,0,0,0.6);
+$orbit-nav-arrow-color: #fff;
+$orbit-nav-arrow-color-hover: #ccc;
 
 /* We use these to control the timer styles */
-$orbit-timer-bg-old: rgb(0,0,0);
 $orbit-timer-bg: rgba(0,0,0,0.6);
+$orbit-timer-show-progress-bar: true;
 
 /* We use these to control the bullet nav styles */
 $orbit-bullet-nav-color: #999;
 $orbit-bullet-nav-color-active: #222;
+$orbit-bullet-radius: emCalc(18);
 
-/* We use thes to controls the style of slide numbers */
-$orbit-slide-number-bg: rgb(0,0,0);
+/* We use these to controls the style of slide numbers */
+$orbit-slide-number-bg: rgba(0,0,0,0);
 $orbit-slide-number-font-color: #fff;
-$orbit-slide-number-padding: emCalc(5px);
+$orbit-slide-number-padding: em-calc(5px);
 
-// Margin for when Orbit is stacked on small screens
-$stack-on-small-margin-bottom: emCalc(20px); // Stack on small does not function right now
+/* Graceful Loading Wrapper and preloader */
+$wrapper-class: "slideshow-wrapper";
+$preloader-class: "preloader";
 ', :css %>
 
         <hr>
 
         <h3>Using the JavaScript</h3>
-        <p>You'll need to include <code>foundation.orbit.js</code> if you want to use Orbit. You'll also need to make sure to include <code>zepto.js</code> and/or <code>jquery.js</code> along with <code>foundation.js</code> above the Orbit plugin. Above your closing <code>&lt;/body&gt;</code> tag include the Foundation library and either Zepto or jQuery.</p>
+        <div class="panel">
+          Before you can use Orbit you'll want to verify that both jQuery (or Zepto) and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">javascript documentation</a> on setting that up.
+        </div>
 
-        <p><a href="../javascript.html" title="How to install Foundation JavaScript">Read how to install Foundation JavaScript</a></p>
+        <p>Just add <code>foundation.orbit.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
+
+        <%= code_example '
+<body>
+
+  ...
+
+  <script>
+      document.write(\'<script src=/js/vendor/\'
+        + (\'__proto__\' in {} ? \'zepto\' : \'jquery\')
+        + \'.js><\/script>\');
+    </script>
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.orbit.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+        ', :html %>
 
         <p>Required Foundation Library: <code>foundation.orbit.js</code></p>
 
@@ -237,11 +302,15 @@ $stack-on-small-margin-bottom: emCalc(20px); // Stack on small does not function
         <p>Orbit options can only be passed in during initialization at this time.</p>
 
 <%= code_example "
-{
+$(document).foundation('orbit', {
+  animation: 'fade',
   timer_speed: 10000,
+  pause_on_hover: true,
+  resume_on_mouseout: false,
   animation_speed: 500,
-  bullets: true,
   stack_on_small: true,
+  navigation_arrows: true,
+  slide_number: true,
   container_class: 'orbit-container',
   stack_on_small_class: 'orbit-stack-on-small',
   next_class: 'orbit-next',
@@ -255,8 +324,13 @@ $stack-on-small-margin-bottom: emCalc(20px); // Stack on small does not function
   slide_number_class: 'orbit-slide-number',
   caption_class: 'orbit-caption',
   active_slide_class: 'active',
-  orbit_transition_class: 'orbit-transitioning'
-}", :js %>
+  orbit_transition_class: 'orbit-transitioning',
+  bullets: true,
+  timer: true,
+  variable_height: false,
+  before_slide_change: function(){},
+  after_slide_change: function(){}
+});", :js %>
 
     <p>Starting in 4.0.7 you can also use the <code>data-options</code> attribute to pass configuration settings to Orbit. Treat it like a <code>style</code> property:</p>
 
@@ -265,6 +339,86 @@ $stack-on-small-margin-bottom: emCalc(20px); // Stack on small does not function
   ...
 </ul>
 ', :html %>
+
+<h3>Events</h3>
+<p>You can bind to the following events in your code.</p>
+
+<table style="width:100%;">
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Params</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>orbit:ready</td>
+      <td>event</td>
+      <td>Fires when the slider has loaded</td>
+    </tr>
+    <tr>
+      <td>orbit:before-slide-change</td>
+      <td>event</td>
+      <td>Fires before a slide changes</td>
+    </tr>
+    <tr>
+      <td>orbit:after-slide-change</td>
+      <td>event, orbit</td>
+      <td>Fires after a slide transition animation has finished. The <code>orbit</code> parameter contains <code>slide_number</code> and <code>total_slides</code>.</td>
+    </tr>
+    <tr>
+      <td>orbit:timer-started</td>
+      <td>event</td>
+      <td>Fires each time the timer is started/resumed</td>
+    </tr>
+    <tr>
+      <td>orbit:timer-stopped</td>
+      <td>event</td>
+      <td>Fires each time the timer is paused/stopped</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5>Example</h5>
+<p>Here's an example of how you can bind to these events:</p>
+
+<%= code_example '<ul id="featured1" data-orbit>
+  <li>
+    <img src="../img/demos/demo1.jpg" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="../img/demos/demo2.jpg" />
+    <div class="orbit-caption">...</div>
+  </li>
+  <li>
+    <img src="../img/demos/demo3.jpg" />
+    <div class="orbit-caption">...</div>
+  </li>
+</ul>
+
+<script>
+$("#featured1").on("orbit:ready", function(event) {
+  console.info("ready");
+});
+$("#featured1").on("orbit:before-slide-change", function(event) {
+  console.info("before slide change");
+});
+$("#featured1").on("orbit:after-slide-change", function(event, orbit) {
+  console.info("after slide change");
+  console.info("slide " + orbit.slide_number + " of " + orbit.total_slides);
+});
+$("#featured1").on("orbit:timer-started", function(event, orbit) {
+  console.info("timer started");
+});
+$("#featured1").on("orbit:timer-stopped", function(event, orbit) {
+  console.info("timer stopped");
+});
+</script>
+', :html %>
+
+
 
       </div>
     </div>

@@ -2,7 +2,9 @@
 *.rbc
 .bundle
 .config
+.grunt
 .yardoc
+.idea
 InstalledFiles
 _yardoc
 coverage
@@ -16,6 +18,7 @@ test/tmp
 test/version_tmp
 test/css
 test/scss/output-test
+vendor/
 tmp
 *.DS_Store
 marketing/.sass-cache/*
@@ -26,3 +29,7 @@ test/css/styles.css
 node_modules
 docs/public/*
 *.scssc
+*.rbenv-version
+*.ruby-version
+
+.project

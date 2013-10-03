@@ -1,12 +1,28 @@
 root = File.join(File.dirname(__FILE__), "..")
 require "foundation/version"
 
-if defined?(Rails)
+if defined?(Rails::Generators::Base)
   require "foundation/generators/install_generator"
 end
 
 module Foundation
-  require "foundation/engine" if defined?(Rails)
+  def self.root
+    File.join(File.dirname(__FILE__), "..")
+  end
+
+  def self.js_path
+    File.join(File.dirname(__FILE__), "..", "js")
+  end
+
+  def self.scss_path
+    File.join(File.dirname(__FILE__), "..", "scss")
+  end
+
+  if defined?(Rails::Engine)
+    require "foundation/engine"
+  elsif defined?(Sprockets)
+    require "foundation/sprockets"
+  end
 end
 
 if defined?(Compass)
