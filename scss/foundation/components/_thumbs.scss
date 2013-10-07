@@ -1,7 +1,7 @@
 //
 // Image Thumbnail Variables
 //
-$include-html-media-classes: $include-html-classes !default;
+$include-html-thumbs-classes: $include-html-classes !default;
 
 // We use these to control border styles
 $thumb-border-style: solid !default;
@@ -39,7 +39,7 @@ $thumb-transition-speed: 200ms !default;
 
 
 // If html classes are turned on we'll include these classes.
-@if $include-html-media-classes != false {
+@if $include-html-thumbs-classes != false {
 
   /* Image Thumbnails */
   .th {

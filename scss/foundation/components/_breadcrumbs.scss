@@ -1,7 +1,7 @@
 //
 // Breadcrumb Variables
 //
-$include-html-nav-classes: $include-html-classes !default;
+$include-html-breadcrumbs-classes: $include-html-classes !default;
 
 // We use this to set the background color for the breadcrumb container.
 $crumb-bg: lighten($secondary-color, 5%) !default;
@@ -109,7 +109,7 @@ $crumb-slash: "/" !default;
 }
 
 
-@if $include-html-nav-classes != false {
+@if $include-html-breadcrumbs-classes != false {
 
   /* Breadcrumbs */
   .breadcrumbs {

@@ -97,32 +97,48 @@ $default-float: left;
 
 // Control whether or not CSS classes come through in the CSS files.
 
-// $include-html-classes: true;
-// $include-print-styles: true;
-// $include-html-global-classes: $include-html-classes;
-// $include-html-inline-list-classes: $include-html-classes;
-// $include-html-type-classes: $include-html-classes;
-// $include-html-grid-classes: $include-html-classes;
-// $include-html-visibility-classes: $include-html-classes;
-// $include-html-button-classes: $include-html-classes;
-// $include-html-form-classes: $include-html-classes;
-// $include-html-form-error-classes: $include-html-classes;
-// $include-html-custom-form-classes: $include-html-classes;
-// $include-html-media-classes: $include-html-classes;
-// $include-html-section-classes: $include-html-classes;
-// $include-html-orbit-classes: $include-html-classes;
-// $include-html-reveal-classes: $include-html-classes;
-// $include-html-joyride-classes: $include-html-classes;
-// $include-html-clearing-classes: $include-html-classes;
-// $include-html-alert-classes: $include-html-classes;
-// $include-html-nav-classes: $include-html-classes;
-// $include-html-top-bar-classes: $include-html-classes;
-// $include-html-label-classes: $include-html-classes;
-// $include-html-panel-classes: $include-html-classes;
-// $include-html-pricing-classes: $include-html-classes;
-// $include-html-progress-classes: $include-html-classes;
-// $include-html-magellan-classes: $include-html-classes;
-// $include-html-tooltip-classes: $include-html-classes;
+$include-print-styles: false;
+$include-html-classes: true;
+															// Used in / affects :
+$include-html-alert-classes: $include-html-classes;			// _alert-boxes.scss
+$include-html-button-classes: $include-html-classes;		// _button-groups.scss, _dropdown-buttons.scss, _dropdown.scss, _split-buttons.scss
+  $include-html-button-groups-classes: $include-html-button-classes; 	// _button-groups.scss,
+  $include-html-dropdown-button-classes: $include-html-button-classes;	// _dropdown-button.scss,
+  $include-html-dropdown-classes: $include-html-button-classes; 		// _dropdown.scss,
+  $include-html-split-buttons-classes: $include-html-button-classes; 	// _split-buttons.scss,
+$include-html-clearing-classes: $include-html-classes; 		// _clearing.scss
+$include-html-custom-form-classes: $include-html-classes;	// _custom-forms.scss
+$include-html-form-classes: $include-html-classes;			// _forms.scss, _switch.scss
+  $include-html-switch-classes: $include-html-form-classes;			// _switch.scss
+$include-html-form-error-classes: $include-html-classes;	// _forms.scss
+$include-html-global-classes: $include-html-classes; 		// _global.scss
+$include-html-grid-classes: $include-html-classes;			// _block-grid.scss, _grid-5.scss, _grid.scss
+  $include-html-block-grid-classes: $include-html-grid-classes;		// _block-grid.scss
+  $include-html-grid-5-classes: $include-html-grid-classes;			// _grid-5.scss
+$include-html-inline-list-classes: $include-html-classes;	// _inline-lists.scss
+$include-html-joyride-classes: $include-html-classes;		// _joyride.scss
+$include-html-label-classes: $include-html-classes;			// _labels.scss
+$include-html-magellan-classes: $include-html-classes;		// _magellan.scss
+$include-html-media-classes: $include-html-classes;			// _flex-video.scss, _thumbs.scss
+  $include-html-flex-video-classes: $include-html-media-classes;	// _flex-video.scss
+  $include-html-thumbs-classes: $include-html-media-classes;		// _thumbs.scss
+$include-html-nav-classes: $include-html-classes;			// _breadcrumbs.scss, _pagination.scss, _side-nav.scss, _sub-nav.scss
+  $include-html-breadcrumbs-classes: $include-html-nav-classes;			// _breadcrumbs.scss
+  $include-html-pagination-classes: $include-html-nav-classes;			// _pagination.scss
+  $include-html-side-nav-classes: $include-html-nav-classes;			// _side-nav.scss
+  $include-html-sub-nav-classes: $include-html-nav-classes;			// _sub-nav.scss
+$include-html-orbit-classes: $include-html-classes;			// _orbit.scss
+$include-html-panel-classes: $include-html-classes;			// _panels.scss
+$include-html-pricing-classes: $include-html-classes;		// _pricing-tables.scss
+$include-html-progress-classes: $include-html-classes;		// _progress-bars.scss
+$include-html-reveal-classes: $include-html-classes;		// _reveal.scss
+$include-html-section-classes: $include-html-classes;		// _section.scss
+$include-html-table-classes: $include-html-classes;			// _tables.scss
+$include-html-tooltip-classes: $include-html-classes;		// _tootip.scss
+$include-html-top-bar-classes: $include-html-classes;		// _top-bar.scss
+$include-html-type-classes: $include-html-classes;			// _keystrokes.scss, _type.scss
+  $include-html-keystrokes-classes: $include-html-type-classes;		// _keystrokes.scss
+$include-html-visibility-classes: $include-html-classes;	// _visibility.scss
 
 // Media Queries
 
@@ -152,6 +168,7 @@ $default-float: left;
 
 // $row-width: em-calc(1000);
 // $column-gutter: em-calc(30);
+$column-gutter: em-calc(0);
 // $total-columns: 12;
 
 //

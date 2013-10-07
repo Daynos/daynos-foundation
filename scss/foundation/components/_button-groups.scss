@@ -1,7 +1,7 @@
 //
 // Button Group Variables
 //
-$include-html-button-classes: $include-html-classes !default;
+$include-html-button-groups-classes: $include-html-classes !default;
 
 // Sets the margin for the right side by default, and the left margin if right-to-left direction is used
 $button-bar-margin-opposite: em-calc(10) !default;
@@ -66,7 +66,7 @@ $button-bar-margin-opposite: em-calc(10) !default;
 }
 
 // Only include these CSS classes if $include-html-classes: true
-@if $include-html-button-classes != false {
+@if $include-html-button-groups-classes != false {
 
   /* Button Groups */
   .button-group { @include button-group-container;

@@ -1,7 +1,7 @@
 //
 // Sub Nav Variables
 //
-$include-html-nav-classes: $include-html-classes !default;
+$include-html-sub-nav-classes: $include-html-classes !default;
 
 // We use these to control margin and padding
 $sub-nav-list-margin: em-calc(-4 0 18) !default;
@@ -76,7 +76,7 @@ $sub-nav-item-divider-margin: emCalc(12) !default;
 }
 
 
-@if $include-html-nav-classes != false {
+@if $include-html-sub-nav-classes != false {
 
   /* Side Nav */
   .sub-nav { @include sub-nav; }

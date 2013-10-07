@@ -12,7 +12,7 @@
 //
 // Grid Variables
 //
-$include-html-grid-classes: true !default;
+$include-html-grid-5-classes: true !default;
 $row-width: em-calc(1000) !default;
 $column-gutter: em-calc(30) !default;
 $total-columns: 12 !default;
@@ -122,7 +122,7 @@ $total-columns: 12 !default;
 }
 
 
-@if $include-html-grid-classes != false {
+@if $include-html-grid-5-classes != false {
   /* Grid HTML Classes */
   .row {
     @include grid-row;
