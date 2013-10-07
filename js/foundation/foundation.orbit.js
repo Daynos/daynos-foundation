@@ -186,6 +186,10 @@
       return t;
     };
 
+    self.start_timer = function() {
+      if (typeof timer === 'object') timer.start();
+    };
+
     self.stop_timer = function() {
       if (typeof timer === 'object') timer.stop();
     };
@@ -420,13 +424,16 @@
       if ($(scope).is('[data-orbit]')) {
         var $el = $(scope);
         var opts = self.data_options($el);
-        new Orbit($el, $.extend({},self.settings, opts));
+        var api = new Orbit($el, $.extend({},self.settings, opts));
+        $(this).data("orbit", api);	
       }
 
       $('[data-orbit]', scope).each(function(idx, el) {
         var $el = $(el);
         var opts = self.data_options($el);
-        new Orbit($el, $.extend({},self.settings, opts));
+        var api = new Orbit($el, $.extend({},self.settings, opts));
+        $(this).data("orbit", api);	
+
       });
     }
   };
